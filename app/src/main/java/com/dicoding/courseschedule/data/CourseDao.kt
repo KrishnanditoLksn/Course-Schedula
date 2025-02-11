@@ -19,7 +19,7 @@ interface CourseDao {
     @RawQuery(observedEntities = [Course::class])
     fun getAll(query: SupportSQLiteQuery): PagingSource<Int, Course>
 
-    @Query("SELECT * FROM course")
+    @Query("SELECT * FROM course WHERE id= :id")
     fun getCourse(id: Int): LiveData<Course>
 
     @Query("SELECT * FROM course WHERE day = :day")

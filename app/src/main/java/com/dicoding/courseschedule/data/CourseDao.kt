@@ -5,6 +5,7 @@ import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.RawQuery
 import androidx.sqlite.db.SupportSQLiteQuery
@@ -25,7 +26,7 @@ interface CourseDao {
     @Query("SELECT * FROM course WHERE day = :day")
     fun getTodaySchedule(day: Int): List<Course>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(course: Course)
 
     @Delete

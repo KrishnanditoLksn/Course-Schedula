@@ -31,7 +31,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         prefAlarm?.setOnPreferenceChangeListener { _, newValue ->
             val dailyReminder = DailyReminder()
-            if (newValue as Boolean) {
+            if (newValue.equals(true)) {
                 dailyReminder.setDailyReminder(requireContext())
             } else {
                 dailyReminder.cancelAlarm(requireContext())
